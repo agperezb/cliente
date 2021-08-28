@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">CREAR DE PRODUCTO</span>
+          <form [formGroup]="productForm" (ngSubmit)="agregarProducto()">
+            <div class="form-group mb-3">
+              <input type="text" formControlName="producto" class="form-control form-control-lg" placeholder="Producto">
+              <div class="text-danger" *ngIf="productForm.get('producto')?.hasError('required') && productForm.get('producto')?.touched">
+                <span>El nombre del producto <strong>es obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <input type="text" formControlName="categoria" class="form-control form-control-lg" placeholder="Categoría">
+              <div class="text-danger" *ngIf="productForm.get('categoria')?.hasError('required') && productForm.get('categoria')?.touched">
+                <span>La categría del producto <strong>es obligatoria</strong></span>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <input type="text" formControlName="ubicacion" class="form-control form-control-lg" placeholder="Ubicación">
+              <div class="text-danger" *ngIf="productForm.get('ubicacion')?.hasError('required') && productForm.get('ubicacion')?.touched">
+                <span>La ubicación del producto <strong>es obligatoria</strong></span>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <input type="number" formControlName="precio" class="form-control form-control-lg" placeholder="Precio">
+              <div class="text-danger" *ngIf="productForm.get('precio')?.hasError('required') && productForm.get('precio')?.touched">
+                <span>El precio del producto <strong>es obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button routerLink="/" class="btn btn-lg btn-secondary">VOLVER</button>
+              <button class="btn btn-lg btn-primary" [disabled]="productForm.invalid">GUARDAR</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
