@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductoService} from "../../services/producto.service";
+import {Producto} from "../../models/producto";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-listar-producto',
@@ -6,10 +9,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar-producto.component.scss']
 })
 export class ListarProductoComponent implements OnInit {
+  ListProducts: Producto[] = [];
 
-  constructor() { }
+  constructor(private _productoService: ProductoService,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.obtenerProductos();
   }
 
+  obtenerProductos() {
+    this._productoService.getProductos().subscribe(data => {
+      console.log(data);
+      this.ListProducts = data;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  eliminarProducto(id: any) {
+    this._productoService.eliminarProducto(id).subscribe(data => {
+      this.toastr.error('El producto fue eliminado exitosamente', 'Producto eliminado');
+      this.obtenerProductos();
+    },error => {
+      console.log(error);
+    });
+  }
 }

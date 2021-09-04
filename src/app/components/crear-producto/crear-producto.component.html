@@ -3,7 +3,7 @@
     <div class="col-lg-8 offset-lg-2">
       <div class="card">
         <div class="card-body text-center">
-          <span class="titulo">CREAR DE PRODUCTO</span>
+          <span class="titulo">{{ titulo }}</span>
           <form [formGroup]="productForm" (ngSubmit)="agregarProducto()">
             <div class="form-group mb-3">
               <input type="text" formControlName="producto" class="form-control form-control-lg" placeholder="Producto">

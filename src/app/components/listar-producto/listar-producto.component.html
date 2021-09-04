@@ -5,7 +5,7 @@
         <div class="card-body text-center">
           <span class="titulo">LISTADO DE PRODUCTOS</span>
           <button class="btn btn-lg btn-success float-end" routerLink="/create_product">NUEVO</button>
-          <table class="table table-striped mt-4">
+          <table *ngIf="ListProducts.length > 0" class="table table-striped mt-4">
             <thead>
             <tr>
               <th scope="col">Producto</th>
@@ -16,38 +16,19 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>Café</td>
-              <td>Alimentos</td>
-              <td>Ocaña</td>
-              <td>1200</td>
+            <tr *ngFor="let producto of ListProducts">
+              <td>{{ producto.nombre }}</td>
+              <td>{{ producto.categoria }}</td>
+              <td>{{ producto.ubicacion }}</td>
+              <td>{{ producto.precio | currency: 'COP': '$': '1.2-2'  }}</td>
               <td>
-                <button class="btn btn-primary mx-2"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-warning"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td>Café</td>
-              <td>Alimentos</td>
-              <td>Ocaña</td>
-              <td>1200</td>
-              <td>
-                <button class="btn btn-primary mx-2"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-warning"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td>Café</td>
-              <td>Alimentos</td>
-              <td>Ocaña</td>
-              <td>1200</td>
-              <td>
-                <button class="btn btn-primary mx-2"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-warning"><i class="fas fa-trash"></i></button>
+                <button class="btn btn-primary mx-2" [routerLink] = "['/edit_product', producto._id]"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-warning" (click)="eliminarProducto(producto._id)"><i class="fas fa-trash"></i></button>
               </td>
             </tr>
             </tbody>
           </table>
+          <h5 *ngIf="ListProducts.length == 0" style="text-align: center;">No hay productos para mostar</h5>
         </div>
       </div>
     </div>
