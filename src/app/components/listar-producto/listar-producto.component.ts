@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductoService} from "../../services/producto.service";
 import {Producto} from "../../models/producto";
 import {ToastrService} from "ngx-toastr";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-listar-producto',
@@ -12,7 +13,9 @@ export class ListarProductoComponent implements OnInit {
   ListProducts: Producto[] = [];
 
   constructor(private _productoService: ProductoService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private auth: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.obtenerProductos();
@@ -34,5 +37,9 @@ export class ListarProductoComponent implements OnInit {
     },error => {
       console.log(error);
     });
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }

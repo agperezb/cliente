@@ -12,6 +12,7 @@ export class ProductoService {
   constructor(private http: HttpClient) { }
 
   getProductos(): Observable<any> {
+    const token = localStorage.getItem('token');
     return this.http.get(this.url);
   }
   eliminarProducto(id: string): Observable<any> {

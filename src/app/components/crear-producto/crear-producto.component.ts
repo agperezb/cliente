@@ -46,14 +46,14 @@ export class CrearProductoComponent implements OnInit {
     if (this.id !== null){
       this._prouctoService.editarProducto(this.id, PRODUCTO).subscribe(data => {
         this.toastr.success('Producto actualizado exitosamente', 'Producto actualizado');
-        this.router.navigate(['/']);
+        this.router.navigate(['/list_product']);
       }, error => {
         this.toastr.error('Tenemos probemas, reintente mas tarde...', 'Error');
       });
     }else {
       this._prouctoService.guardarProducto(PRODUCTO).subscribe(data => {
         this.toastr.success('Producto agregado exitosamente', 'Producto agregado');
-        this.router.navigate(['/']);
+        this.router.navigate(['/list_product']);
       }, error => {
         this.toastr.error('Tenemos probemas, reintente mas tarde...', 'Error');
       });
