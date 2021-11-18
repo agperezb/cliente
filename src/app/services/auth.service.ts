@@ -15,7 +15,7 @@ export const httpOptions = {
 })
 export class AuthService {
 
-  url = 'http://localhost:4000/api/users/login';
+  url = 'http://localhost:4000/api/users';
 
   constructor(
     private http: HttpClient,
@@ -25,7 +25,11 @@ export class AuthService {
 
   login(user: login): Observable<any>{
     console.log(user)
-    return this.http.post<any>(this.url, user, httpOptions);
+    return this.http.post<any>(`${this.url}/login`, user, httpOptions);
+  }
+
+  register(user: login): Observable<any>{
+    return this.http.post<any>(`${this.url}/register`, user, httpOptions);
   }
 
   logout(){
