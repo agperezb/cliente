@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {login} from "../models/auth";
+import { login, register } from "../models/auth";
 import {Router} from "@angular/router";
 
 export const httpOptions = {
@@ -28,7 +28,7 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/login`, user, httpOptions);
   }
 
-  register(user: login): Observable<any>{
+  register(user: register): Observable<any>{
     return this.http.post<any>(`${this.url}/register`, user, httpOptions);
   }
 

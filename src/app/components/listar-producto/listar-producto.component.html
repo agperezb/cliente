@@ -28,7 +28,7 @@
             </tr>
             </tbody>
           </table>
-          <h5 *ngIf="ListProducts.length == 0" style="text-align: center;">No hay productos para mostar</h5>
+          <h5 *ngIf="ListProducts.length === 0" style="text-align: center;">No hay productos para mostar</h5>
           <button class="btn btn-lg btn-success float-end" (click)="logout()">Cerrar Sesión</button>
         </div>
       </div>

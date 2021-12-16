@@ -6,6 +6,10 @@
           <span class="titulo">Iniciar Sesión</span>
           <form [formGroup]="registerForm" (ngSubmit)="register()">
             <div class="text-start">
+              <label for="name" class="form-label">Nombre:</label>
+              <input type="text" formControlName="name" class="form-control" id="name">
+            </div>
+            <div class="text-start">
               <label for="exampleInputEmail1" class="form-label">Correo:</label>
               <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               <!--              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
